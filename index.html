@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA: Población, Muestra y Variables</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50">
+<div class="flex min-h-screen flex-col">
+<div class="flex flex-1">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-white shadow-lg flex-shrink-0 hidden md:flex md:flex-col">
+        <div class="p-4">
+            <div style="width:150px;height:150px;" class="p-2 mx-auto flex items-center justify-center bg-white rounded-full shadow-lg border-2 border-green-500 hover:shadow-green-400 transition-shadow">
+                <img src="img/logo.webp" alt="Logo" class="w-5/6 h-5/6 object-contain" loading="lazy"
+                     onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-green-700 font-bold text-xs text-center block p-2\'>Universidad de Córdoba</span>'">
+            </div>
+        </div>
+        <nav class="mt-6 flex-1">
+            <a href="#" class="sidebar-link active flex items-center py-3 px-6 font-medium text-slate-700" data-target="introduccion"><span class="mr-3 text-xl">🚀</span> Introducción</a>
+            <a href="#" class="sidebar-link flex items-center py-3 px-6 font-medium text-slate-700" data-target="objetivos"><span class="mr-3 text-xl">🎯</span> Objetivos</a>
+            <a href="#" class="sidebar-link flex items-center py-3 px-6 font-medium text-slate-700" data-target="contenido"><span class="mr-3 text-xl">📚</span> Contenido</a>
+            <a href="#" class="sidebar-link flex items-center py-3 px-6 font-medium text-slate-700" data-target="actividades"><span class="mr-3 text-xl">✍️</span> Actividades</a>
+            <a href="#" class="sidebar-link flex items-center py-3 px-6 font-medium text-slate-700" data-target="evaluacion"><span class="mr-3 text-xl">✔️</span> Evaluación</a>
+            <a href="#" class="sidebar-link flex items-center py-3 px-6 font-medium text-slate-700" data-target="recursos"><span class="mr-3 text-xl">📖</span> Recursos</a>
+            <a href="#" class="sidebar-link flex items-center py-3 px-6 font-medium text-slate-700" data-target="bibliografia"><span class="mr-3 text-xl">📚</span> Bibliografía</a>
+        </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="flex-1 p-4 sm:p-6 md:p-10 bg-gray-50">
+
+        <!-- Mobile header -->
+        <div class="md:hidden mb-6 flex flex-col items-center">
+            <div style="width:100px;height:100px;" class="p-2 flex items-center justify-center bg-white rounded-full shadow-lg mb-2">
+                <img src="img/logo.webp" alt="Logo" class="w-5/6 h-5/6 object-contain" loading="lazy"
+                     onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-green-700 font-bold text-xs\'>UNICOR</span>'">
+            </div>
+            <select id="mobile-nav" class="w-full mt-2 p-2 border rounded-md bg-white shadow-sm">
+                <option value="introduccion">Introducción</option>
+                <option value="objetivos">Objetivos</option>
+                <option value="contenido">Contenido</option>
+                <option value="actividades">Actividades</option>
+                <option value="evaluacion">Evaluación</option>
+                <option value="recursos">Recursos</option>
+                <option value="bibliografia">Bibliografía</option>
+            </select>
+        </div>
+<!-- ══ INTRODUCCIÓN ══ -->
+<div id="introduccion" class="content-pane active">
+    <h2 class="text-2xl sm:text-3xl font-bold text-green-800 mb-4">Población, Muestra y Variables Estadísticas</h2>
+    <p class="text-slate-700 leading-relaxed mb-4">
+        Antes de calcular promedios, construir gráficos o entrenar un modelo de machine learning, es necesario responder tres preguntas fundamentales: ¿qué se está estudiando?, ¿sobre quiénes? y ¿con qué tipo de datos? Esos son exactamente los conceptos de población, muestra y variable, y constituyen el punto de partida de todo análisis estadístico riguroso.
+    </p>
+    <p class="text-slate-700 leading-relaxed mb-4">
+        En el desarrollo de software estos conceptos aparecen constantemente: los usuarios de una aplicación son una <strong>población</strong>; los registros analizados durante una semana son una <strong>muestra</strong>; el tiempo de respuesta del servidor, el número de errores o el sistema operativo de cada dispositivo son <strong>variables</strong> de distinta naturaleza. Clasificar correctamente los datos es el primer paso para no llegar a conclusiones erróneas.
+    </p>
+
+    <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-700 rounded-r-lg">
+        <p class="text-green-900">Estos conceptos son la base de la analítica de aplicaciones, las pruebas de calidad de software, el monitoreo de servidores y la ciencia de datos.</p>
+    </div>
+
+    <!-- Voz -->
+    <div class="speech-controls p-3 bg-green-100 rounded-lg flex items-center flex-wrap gap-2 mt-4" data-target="introduccion">
+        <button class="play-btn bg-green-700 hover:bg-green-800 text-white font-medium py-1 px-4 rounded-full flex items-center">▶️ Leer</button>
+        <button class="pause-btn bg-amber-600 hover:bg-amber-700 text-white font-medium py-1 px-4 rounded-full flex items-center" disabled>⏸️ Pausar</button>
+        <button class="stop-btn bg-red-600 hover:bg-red-700 text-white font-medium py-1 px-4 rounded-full flex items-center" disabled>⏹️ Detener</button>
+        <div class="flex items-center ml-2">
+            <label class="text-sm text-green-800 mr-2">Velocidad:</label>
+            <input type="range" class="speech-rate" min="0.5" max="2" step="0.1" value="1">
+        </div>
+    </div>
+
+    <!-- Video -->
+    <div class="mt-8 bg-white rounded-xl shadow-md p-4 border border-green-200" style="max-width:780px;margin-left:auto;margin-right:auto;">
+        <h3 class="text-base font-bold text-green-700 mb-3 text-center">🎬 Video introductorio</h3>
+        <div class="ratio-16x9 rounded-lg overflow-hidden video-embed">
+            <iframe src="https://www.youtube.com/embed/CWDYwZ_c1lI"
+                title="Población muestra y variables"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+        </div>
+    </div>
+</div>
+
+        <!-- ══ OBJETIVOS ══ -->
+        <div id="objetivos" class="content-pane">
+            <h2 class="text-2xl sm:text-3xl font-bold text-green-800 mb-6">Objetivos de aprendizaje</h2>
+           <ul class="space-y-4">
+    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm border-l-4 border-green-600"><span class="text-2xl mr-3">🧠</span><span><strong>Identificar</strong> los conceptos de población, muestra e individuo en situaciones propias del desarrollo de software.</span></li>
+    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm border-l-4 border-green-600"><span class="text-2xl mr-3">🔍</span><span><strong>Diferenciar</strong> parámetro y estadístico según se trabaje con la población completa o con una muestra.</span></li>
+    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm border-l-4 border-green-600"><span class="text-2xl mr-3">📊</span><span><strong>Clasificar</strong> variables cualitativas y cuantitativas, distinguiendo entre discretas y continuas.</span></li>
+    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm border-l-4 border-green-600"><span class="text-2xl mr-3">📏</span><span><strong>Relacionar</strong> las cuatro escalas de medición (nominal, ordinal, intervalo, razón) con el análisis estadístico válido para cada una.</span></li>
+    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm border-l-4 border-green-600"><span class="text-2xl mr-3">💻</span><span><strong>Aplicar</strong> la clasificación de variables y escalas a datos reales de sistemas de información y aplicaciones de software.</span></li>
+</ul>
+            <div class="speech-controls p-3 bg-green-100 rounded-lg flex items-center flex-wrap gap-2 mt-6" data-target="objetivos">
+                <button class="play-btn bg-green-700 hover:bg-green-800 text-white font-medium py-1 px-4 rounded-full flex items-center">▶️ Leer</button>
+                <button class="pause-btn bg-amber-600 hover:bg-amber-700 text-white font-medium py-1 px-4 rounded-full flex items-center" disabled>⏸️ Pausar</button>
+                <button class="stop-btn bg-red-600 hover:bg-red-700 text-white font-medium py-1 px-4 rounded-full flex items-center" disabled>⏹️ Detener</button>
+                <div class="flex items-center ml-2">
+                    <label class="text-sm text-green-800 mr-2">Velocidad:</label>
+                    <input type="range" class="speech-rate" min="0.5" max="2" step="0.1" value="1">
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ CONTENIDO ══ -->
+        <div id="contenido" class="content-pane">
+            <h2 class="text-2xl sm:text-3xl font-bold text-green-800 mb-4">Desarrollo del Contenido</h2>
+
+            <!-- PESTAÑAS PRINCIPALES -->
+            <div class="flex flex-wrap gap-2 mb-4">
+                <button onclick="showMainTab('tab-pob')" id="main-tab-pob" class="main-tab-btn px-5 py-3 text-base font-semibold rounded-full border-2 border-green-700 bg-green-700 text-white transition-all shadow-sm">Población y Muestra</button>
+                <button onclick="showMainTab('tab-var')" id="main-tab-var" class="main-tab-btn px-5 py-3 text-base font-semibold rounded-full border-2 border-green-200 bg-white text-slate-600 hover:text-green-700 transition-all shadow-sm">Tipos de Variables</button>
+                <button onclick="showMainTab('tab-esc')" id="main-tab-esc" class="main-tab-btn px-5 py-3 text-base font-semibold rounded-full border-2 border-green-200 bg-white text-slate-600 hover:text-green-700 transition-all shadow-sm">Escalas de Medición</button>
+                <button onclick="showMainTab('tab-ej')" id="main-tab-ej" class="main-tab-btn px-5 py-3 text-base font-semibold rounded-full border-2 border-green-200 bg-white text-slate-600 hover:text-green-700 transition-all shadow-sm">Ejemplo Integrador</button>
+            </div>
+
+            <!-- ══ TAB 1: POBLACIÓN Y MUESTRA ══ -->
+            <div id="tab-pob" class="main-tab-content bg-white border-2 border-green-300 rounded-xl p-5">
+                <div class="flex gap-2 mb-5 border-b border-slate-200 flex-wrap">
+                    <button onclick="showSub('pob','definicion')" id="pob-tab-definicion" class="sub-tab-pob px-4 py-2 rounded-t-lg text-sm font-semibold border-b-2 border-green-700 text-green-800 bg-green-50">Definiciones</button>
+                    <button onclick="showSub('pob','param')" id="pob-tab-param" class="sub-tab-pob px-4 py-2 rounded-t-lg text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-green-700">Parámetro vs Estadístico</button>
+                    <button onclick="showSub('pob','ejemplos')" id="pob-tab-ejemplos" class="sub-tab-pob px-4 py-2 rounded-t-lg text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-green-700">Ejemplos</button>
+                </div>
+
+                <!-- POB: DEFINICIONES -->
+                <div id="pob-definicion" class="sub-pob space-y-5 text-slate-700">
+                    <p>La <strong>población</strong> es el conjunto completo de elementos que se desea estudiar; la <strong>muestra</strong> es un subconjunto representativo de esa población, y el <strong>individuo</strong> es cada uno de los elementos que la componen. La siguiente figura ilustra esta relación en un estudio de usuarios de una aplicación móvil.</p>
+
+                    <div class="image-container">
+                        <img src="img/figura1.png" alt="Relación entre población y muestra" loading="lazy"
+                             onerror="this.parentElement.innerHTML='<p class=\'text-slate-400 text-xs text-center p-6\'>Coloca aquí img/figura1.png</p>'">
+                        <button class="expand-btn" title="Ampliar imagen">＋</button>
+                    </div>
+                    <p class="text-xs text-slate-500 text-center -mt-2">Figura 1. Relación entre la población (N) y la muestra (n) en un estudio de usuarios de una aplicación móvil.</p>
+
+                    <h4 class="font-bold text-slate-700">Conceptos clave — haz clic para revelar</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="flip-card h-40 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-inner">
+                                <div class="flip-front card-institucional flex flex-col items-center justify-center p-4">
+                                    <p class="font-bold text-slate-700 text-center text-sm">Población</p>
+                                    <p class="text-xs text-slate-400 mt-2">Clic para revelar</p>
+                                </div>
+                                <div class="flip-back bg-green-800 rounded-xl flex flex-col items-center justify-center p-4">
+                                    <p class="text-white text-sm text-center">Conjunto completo de todos los elementos que comparten al menos una característica. Tamaño = N. Si se estudia completa, el estudio se llama censo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card h-40 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-inner">
+                                <div class="flip-front card-institucional-alt flex flex-col items-center justify-center p-4">
+                                    <p class="font-bold text-slate-700 text-center text-sm">Muestra</p>
+                                    <p class="text-xs text-slate-400 mt-2">Clic para revelar</p>
+                                </div>
+                                <div class="flip-back bg-blue-800 rounded-xl flex flex-col items-center justify-center p-4">
+                                    <p class="text-white text-sm text-center">Subconjunto representativo de la población, seleccionado cuando analizar todo es costoso o imposible. Tamaño = n. El estudio se llama muestreo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card h-40 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-inner">
+                                <div class="flip-front card-institucional flex flex-col items-center justify-center p-4">
+                                    <p class="font-bold text-slate-700 text-center text-sm">Individuo</p>
+                                    <p class="text-xs text-slate-400 mt-2">Clic para revelar</p>
+                                </div>
+                                <div class="flip-back bg-green-800 rounded-xl flex flex-col items-center justify-center p-4">
+                                    <p class="text-white text-sm text-center">Cada uno de los elementos que compone la población o la muestra, también llamado unidad de análisis: una persona, un registro, un servidor, una petición HTTP.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 border-l-4 border-amber-600 rounded-r-xl p-4">
+                        <h4 class="font-bold text-amber-800 mb-1">La población debe estar bien delimitada</h4>
+                        <p class="text-sm">Siempre en tiempo, espacio y criterio de pertenencia. Ejemplo correcto: "usuarios activos de la aplicación durante enero de 2026 en Colombia". Sin ese límite, no se sabe a quién se puede generalizar el análisis.</p>
+                    </div>
+                </div>
+
+                <!-- POB: PARÁMETRO VS ESTADÍSTICO -->
+                <div id="pob-param" class="sub-pob hidden space-y-5 text-slate-700">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="card-institucional p-5">
+                            <h4 class="font-bold text-green-800 text-lg mb-2 text-center">Parámetro</h4>
+                            <p class="text-sm text-slate-600 mb-3 text-center">Se calcula sobre la población completa.</p>
+                            <div class="bg-slate-50 rounded-lg p-3 border border-slate-200 space-y-1 text-sm">
+                                <p>Media poblacional: <strong>μ</strong> (mu)</p>
+                                <p>Desviación estándar: <strong>σ</strong> (sigma)</p>
+                                <p>Proporción: <strong>P</strong></p>
+                            </div>
+                            <div class="mt-3 bg-green-50 rounded p-2 text-green-800 text-xs">Ejemplo: tiempo promedio de respuesta de todos los servidores de la empresa.</div>
+                        </div>
+                        <div class="card-institucional-alt p-5">
+                            <h4 class="font-bold text-blue-800 text-lg mb-2 text-center">Estadístico</h4>
+                            <p class="text-sm text-slate-600 mb-3 text-center">Se calcula sobre una muestra.</p>
+                            <div class="bg-slate-50 rounded-lg p-3 border border-slate-200 space-y-1 text-sm">
+                                <p>Media muestral: <strong>x̄</strong> (x barra)</p>
+                                <p>Desviación muestral: <strong>s</strong></p>
+                                <p>Proporción muestral: <strong>p̂</strong> (p sombrero)</p>
+                            </div>
+                            <div class="mt-3 bg-blue-50 rounded p-2 text-blue-800 text-xs">Ejemplo: tiempo promedio de una muestra de 100 peticiones al azar.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 border-l-4 border-slate-400 rounded-r-xl p-5">
+                        <h4 class="font-bold text-slate-700 mb-2">¿Por qué importa la distinción?</h4>
+                        <div class="space-y-2 text-sm">
+                            <p>Un análisis de errores hecho solo sobre usuarios de Android no puede generalizarse a usuarios de iOS.</p>
+                            <p>Trabajar con muestras reduce costos: no hay que revisar millones de registros de un log si una muestra bien tomada da la misma información.</p>
+                            <p>Es la base de la inferencia estadística: estimar parámetros poblacionales a partir de estadísticos muestrales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POB: EJEMPLOS -->
+                <div id="pob-ejemplos" class="sub-pob hidden space-y-4 text-slate-700">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead><tr class="bg-green-800 text-white"><th class="p-3 text-left rounded-tl-lg">Situación</th><th class="p-3 text-left">Población</th><th class="p-3 text-left rounded-tr-lg">Muestra</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-slate-50 border-b border-slate-200"><td class="p-3 font-semibold">Pruebas de rendimiento</td><td class="p-3">Todas las peticiones HTTP del servidor en un mes</td><td class="p-3">5 000 peticiones seleccionadas al azar</td></tr>
+                                <tr class="bg-white border-b border-slate-200"><td class="p-3 font-semibold">Satisfacción de usuarios</td><td class="p-3">Todos los usuarios registrados (N = 80 000)</td><td class="p-3">400 usuarios encuestados</td></tr>
+                                <tr class="bg-slate-50 border-b border-slate-200"><td class="p-3 font-semibold">Control de calidad</td><td class="p-3">Todas las líneas de código del proyecto</td><td class="p-3">Módulos revisados en el code review semanal</td></tr>
+                                <tr class="bg-white"><td class="p-3 font-semibold">Análisis de errores</td><td class="p-3">Todos los crash reports del año</td><td class="p-3">Los reportes de la última versión</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-5 border-l-4 border-slate-400">
+                        <h4 class="font-bold text-slate-700 mb-2">¿Por qué no siempre se hace censo?</h4>
+                        <p class="text-sm">Un servidor de alta demanda puede recibir millones de peticiones por día. Analizar cada una sería imposible en tiempo real. Las muestras permiten detectar anomalías, calcular percentiles de latencia (p95, p99) y tomar decisiones de escalado sin procesar el universo completo de datos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ TAB 2: TIPOS DE VARIABLES ══ -->
+            <div id="tab-var" class="main-tab-content hidden bg-white border-2 border-green-300 rounded-xl p-5">
+                <div class="flex gap-2 mb-5 border-b border-slate-200 flex-wrap">
+                    <button onclick="showSub('var','clasif')" id="var-tab-clasif" class="sub-tab-var px-4 py-2 rounded-t-lg text-sm font-semibold border-b-2 border-green-700 text-green-800 bg-green-50">Clasificación</button>
+                    <button onclick="showSub('var','regla')" id="var-tab-regla" class="sub-tab-var px-4 py-2 rounded-t-lg text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-green-700">Juego: clasifica la variable</button>
+                </div>
+
+                <!-- VAR: CLASIFICACIÓN -->
+                <div id="var-clasif" class="sub-var space-y-5 text-slate-700">
+                    <p>Una variable es una característica de los individuos que puede tomar diferentes valores. Su clasificación determina qué análisis estadístico es válido, tal como se resume en la siguiente figura.</p>
+
+                    <div class="image-container">
+                        <img src="img/figura2.png" alt="Clasificación de las variables" loading="lazy"
+                             onerror="this.parentElement.innerHTML='<p class=\'text-slate-400 text-xs text-center p-6\'>Coloca aquí img/figura2.png</p>'">
+                        <button class="expand-btn" title="Ampliar imagen">＋</button>
+                    </div>
+                    <p class="text-xs text-slate-500 text-center -mt-2">Figura 2. Clasificación de las variables.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="card-institucional p-4">
+                            <h4 class="font-bold text-green-800 mb-2">Cualitativa Nominal</h4>
+                            <p class="text-sm mb-2 text-slate-600">Categorías sin orden. No se pueden sumar ni restar.</p>
+                            <div class="bg-slate-50 rounded-lg p-2 border border-slate-200 text-xs space-y-1 text-slate-600">
+                                <p>Sistema operativo (Android, iOS, Windows)</p>
+                                <p>Tipo de dispositivo (móvil, tablet, PC)</p>
+                                <p>Lenguaje de programación</p>
+                                <p>Código de estado HTTP (200, 404, 500)</p>
+                            </div>
+                        </div>
+                        <div class="card-institucional-alt p-4">
+                            <h4 class="font-bold text-blue-800 mb-2">Cualitativa Ordinal</h4>
+                            <p class="text-sm mb-2 text-slate-600">Categorías con orden, pero sin distancias iguales.</p>
+                            <div class="bg-slate-50 rounded-lg p-2 border border-slate-200 text-xs space-y-1 text-slate-600">
+                                <p>Severidad del bug (baja, media, alta, crítica)</p>
+                                <p>Prioridad de tickets (P1 a P4)</p>
+                                <p>Calificación en tienda (1 a 5 estrellas)</p>
+                                <p>Nivel de plan (Básico, Estándar, Premium)</p>
+                            </div>
+                        </div>
+                        <div class="card-institucional p-4">
+                            <h4 class="font-bold text-green-800 mb-2">Cuantitativa Discreta</h4>
+                            <p class="text-sm mb-2 text-slate-600">Se cuenta. Solo toma valores enteros.</p>
+                            <div class="bg-slate-50 rounded-lg p-2 border border-slate-200 text-xs space-y-1 text-slate-600">
+                                <p>N.º de bugs reportados por semana</p>
+                                <p>N.º de sesiones del usuario</p>
+                                <p>N.º de descargas de la app</p>
+                                <p>N.º de commits por día</p>
+                            </div>
+                        </div>
+                        <div class="card-institucional-alt p-4">
+                            <h4 class="font-bold text-blue-800 mb-2">Cuantitativa Continua</h4>
+                            <p class="text-sm mb-2 text-slate-600">Se mide. Puede tomar cualquier valor decimal.</p>
+                            <div class="bg-slate-50 rounded-lg p-2 border border-slate-200 text-xs space-y-1 text-slate-600">
+                                <p>Tiempo de respuesta del servidor (ms)</p>
+                                <p>Temperatura del CPU (°C)</p>
+                                <p>Memoria RAM usada (GB)</p>
+                                <p>Duración de la sesión (minutos)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VAR: JUEGO INTERACTIVO -->
+                <div id="var-regla" class="sub-var hidden">
+                    <div class="bg-white rounded-xl p-5 border-2 border-green-300">
+                        <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+                            <h4 class="font-bold text-slate-700 text-lg">🎮 Juego: clasifica la variable</h4>
+                            <span id="game-score" class="score-chip">Puntaje: 0 / 0</span>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-4">Te mostraré una variable real de desarrollo de software. Sigue las preguntas y elige la respuesta correcta en cada paso. Al final sabrás su clasificación completa.</p>
+
+                        <div class="game-progress-track mb-5">
+                            <div id="game-progress-fill" class="game-progress-fill" style="width:0%"></div>
+                        </div>
+
+                        <div id="game-var-card" class="bg-green-50 border-2 border-green-600 rounded-xl p-4 mb-5 text-center">
+                            <p class="text-xs text-green-700 font-semibold uppercase tracking-wide">Variable a clasificar</p>
+                            <p id="game-var-name" class="text-xl font-bold text-green-900 mt-1"></p>
+                        </div>
+
+                        <div id="game-question-container"></div>
+
+                        <div id="game-final-result" class="hidden mt-4"></div>
+
+                        <div class="flex gap-3 mt-5">
+                            <button id="game-next-btn" class="hidden bg-green-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-800 transition-colors">Siguiente variable →</button>
+                            <button id="game-restart-btn" class="bg-slate-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-slate-600 transition-colors">Reiniciar juego</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 border-l-4 border-amber-600 rounded-r-xl p-4 mt-5">
+                        <h4 class="font-bold text-amber-800 mb-1">⚠️ Trampa frecuente: los códigos numéricos</h4>
+                        <p class="text-sm">El código de estado HTTP (200, 404, 500) parece cuantitativo porque son números, pero son etiquetas sin valor numérico: 500 no es "2.5 veces más" que 200. Es una variable cualitativa nominal. El truco es preguntar: ¿tiene sentido sumarlos o promediarlos? Si la respuesta es no, la variable es cualitativa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ TAB 3: ESCALAS DE MEDICIÓN ══ -->
+            <div id="tab-esc" class="main-tab-content hidden bg-white border-2 border-green-300 rounded-xl p-5">
+                <div class="space-y-5 text-slate-700">
+                    <p>La escala de medición determina qué operaciones matemáticas y qué análisis estadísticos son válidos sobre una variable. Existen cuatro escalas, ordenadas de menor a mayor nivel de información, como se resume en la siguiente figura.</p>
+
+                    <div class="image-container">
+                        <img src="img/figura3.png" alt="Escalas de medición de las variables" loading="lazy"
+                             onerror="this.parentElement.innerHTML='<p class=\'text-slate-400 text-xs text-center p-6\'>Coloca aquí img/figura3.png</p>'">
+                        <button class="expand-btn" title="Ampliar imagen">＋</button>
+                    </div>
+                    <p class="text-xs text-slate-500 text-center -mt-2">Figura 3. Escalas de medición de las variables y acumulación de sus propiedades.</p>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead><tr class="bg-green-800 text-white"><th class="p-3 text-left rounded-tl-lg">Escala</th><th class="p-3 text-left">¿Qué permite?</th><th class="p-3 text-left">Operaciones válidas</th><th class="p-3 text-left rounded-tr-lg">Ejemplo tecnológico</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-slate-50 border-b border-slate-200"><td class="p-3 font-bold text-slate-700">Nominal</td><td class="p-3">Clasificar sin orden</td><td class="p-3 text-xs">Contar, moda</td><td class="p-3 text-xs">Tipo de dispositivo, lenguaje de programación</td></tr>
+                                <tr class="bg-white border-b border-slate-200"><td class="p-3 font-bold text-slate-700">Ordinal</td><td class="p-3">Clasificar y ordenar</td><td class="p-3 text-xs">Contar, moda, mediana</td><td class="p-3 text-xs">Prioridad de tickets, calificación en estrellas</td></tr>
+                                <tr class="bg-slate-50 border-b border-slate-200"><td class="p-3 font-bold text-slate-700">Intervalo</td><td class="p-3">Ordenar y medir distancias; cero arbitrario</td><td class="p-3 text-xs">Suma, resta, media</td><td class="p-3 text-xs">Temperatura del CPU en °C, fecha de lanzamiento</td></tr>
+                                <tr class="bg-green-50"><td class="p-3 font-bold text-green-800">Razón</td><td class="p-3">Todo lo anterior; cero absoluto</td><td class="p-3 text-xs">Todas, incluyendo proporciones</td><td class="p-3 text-xs">Tiempo de respuesta, memoria usada, descargas</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-amber-50 border-l-4 border-amber-600 rounded-r-xl p-4">
+                            <h4 class="font-bold text-amber-800 mb-1">Intervalo: cero convencional</h4>
+                            <p class="text-sm text-slate-700">0 °C no significa "ausencia de temperatura". Por eso no se puede decir que 40 °C es el doble de caliente que 20 °C: las razones no tienen sentido en esta escala.</p>
+                        </div>
+                        <div class="bg-green-50 border-l-4 border-green-700 rounded-r-xl p-4">
+                            <h4 class="font-bold text-green-800 mb-1">Razón: cero absoluto</h4>
+                            <p class="text-sm text-slate-700">0 ms equivale a sin latencia. Aquí sí tiene sentido decir que un servidor de 100 ms es el doble de rápido que uno de 200 ms.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-5 border-l-4 border-slate-400">
+                        <h4 class="font-bold text-slate-700 mb-2">¿Por qué importa la escala en desarrollo de software?</h4>
+                        <div class="space-y-1 text-sm text-slate-600">
+                            <p>En machine learning las variables categóricas (nominal u ordinal) necesitan codificación, mientras que las numéricas (intervalo o razón) necesitan normalización.</p>
+                            <p>En dashboards, calcular el promedio de códigos HTTP es un error estadístico porque son nominales; calcular el promedio del tiempo de respuesta es correcto porque es escala de razón.</p>
+                            <p>En gráficas, las variables nominales se representan con barras o pastel, y las de razón con histograma o boxplot. La escala determina el gráfico adecuado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ TAB 4: EJEMPLO INTEGRADOR ══ -->
+            <div id="tab-ej" class="main-tab-content hidden bg-white border-2 border-green-300 rounded-xl p-5">
+                <div class="space-y-5 text-slate-700">
+                    <h4 class="font-bold text-slate-700 text-lg">Dataset real de una aplicación móvil</h4>
+                    <p>Considera la siguiente tabla con registros de una app. Analicemos la clasificación de cada variable.</p>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-200">
+                        <table class="w-full text-sm border-collapse">
+                            <thead><tr class="bg-green-800 text-white"><th class="p-3">Usuario</th><th class="p-3">Sistema operativo</th><th class="p-3">Nivel de plan</th><th class="p-3">N.º sesiones</th><th class="p-3">Tiempo sesión (min)</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-slate-50 border-b border-slate-200 text-center"><td class="p-3 font-mono font-bold">U001</td><td class="p-3">Android</td><td class="p-3">Premium</td><td class="p-3">45</td><td class="p-3">12.5</td></tr>
+                                <tr class="bg-white border-b border-slate-200 text-center"><td class="p-3 font-mono font-bold">U002</td><td class="p-3">iOS</td><td class="p-3">Básico</td><td class="p-3">12</td><td class="p-3">8.2</td></tr>
+                                <tr class="bg-slate-50 text-center"><td class="p-3 font-mono font-bold">U003</td><td class="p-3">Android</td><td class="p-3">Estándar</td><td class="p-3">30</td><td class="p-3">15.8</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="card-institucional p-4">
+                            <div class="flex items-start gap-3">
+                                <span class="badge-institucional rounded-lg px-2 py-1 text-xs font-bold flex-shrink-0">Nominal</span>
+                                <div>
+                                    <p class="font-bold text-slate-700">Sistema operativo</p>
+                                    <p class="text-sm text-slate-600">Cualitativa nominal: Android, iOS y Windows son categorías sin orden. No se puede decir que Android es "mayor" que iOS. El análisis válido es moda, tablas de frecuencia y gráfico de barras.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-institucional-alt p-4">
+                            <div class="flex items-start gap-3">
+                                <span class="badge-institucional-alt rounded-lg px-2 py-1 text-xs font-bold flex-shrink-0">Ordinal</span>
+                                <div>
+                                    <p class="font-bold text-slate-700">Nivel de plan</p>
+                                    <p class="text-sm text-slate-600">Cualitativa ordinal: Básico, Estándar y Premium tienen orden, pero no sabemos si la diferencia entre Básico y Estándar es igual que entre Estándar y Premium. Admite además la mediana.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-institucional p-4">
+                            <div class="flex items-start gap-3">
+                                <span class="badge-institucional rounded-lg px-2 py-1 text-xs font-bold flex-shrink-0">Discreta, razón</span>
+                                <div>
+                                    <p class="font-bold text-slate-700">N.º de sesiones</p>
+                                    <p class="text-sm text-slate-600">Cuantitativa discreta, escala de razón: se cuenta en valores enteros; 0 sesiones equivale a ninguna sesión (cero absoluto), y las proporciones son válidas.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-institucional-alt p-4">
+                            <div class="flex items-start gap-3">
+                                <span class="badge-institucional-alt rounded-lg px-2 py-1 text-xs font-bold flex-shrink-0">Continua, razón</span>
+                                <div>
+                                    <p class="font-bold text-slate-700">Tiempo promedio de sesión</p>
+                                    <p class="text-sm text-slate-600">Cuantitativa continua, escala de razón: se mide y admite decimales; 0 minutos equivale a sin uso (cero absoluto). Todos los análisis estadísticos son válidos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-green-50 rounded-xl p-5 border-l-4 border-green-700">
+                        <h4 class="font-bold text-green-800 mb-2">Conclusión del ejemplo integrador</h4>
+                        <p class="text-sm text-slate-700">Con solo cinco columnas de datos ya aparecen variables de cuatro tipos diferentes. Identificarlas correctamente determina qué gráfico usar, qué estadísticos calcular, cómo preprocesarlas para machine learning y qué conclusiones son válidas. Este es el primer paso de cualquier análisis de datos real.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ ACTIVIDADES ══ -->
+        <div id="actividades" class="content-pane">
+            <h2 class="text-2xl sm:text-3xl font-bold text-green-800 mb-6">Actividades prácticas</h2>
+
+            <!-- Actividad 1: Drag & Drop de variables -->
+            <div class="bg-white border-l-4 border-green-700 rounded-lg shadow-sm p-6 mb-8">
+                <h3 class="text-xl font-bold text-slate-700 mb-2">Actividad 1. Clasifica las variables — arrastra y suelta</h3>
+                <p class="text-slate-600 mb-4">Arrastra cada variable a la categoría correcta:</p>
+
+                <div id="drag-bank" class="flex flex-wrap gap-2 p-3 bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl mb-5 min-h-12">
+                    <div class="drag-item bg-slate-100 text-slate-700 border border-slate-300 rounded-full px-3 py-1 text-sm font-semibold select-none" draggable="true" data-var="var-so">Sistema operativo</div>
+                    <div class="drag-item bg-slate-100 text-slate-700 border border-slate-300 rounded-full px-3 py-1 text-sm font-semibold select-none" draggable="true" data-var="var-tipo-disp">Tipo dispositivo</div>
+                    <div class="drag-item bg-slate-100 text-slate-700 border border-slate-300 rounded-full px-3 py-1 text-sm font-semibold select-none" draggable="true" data-var="var-plan">Nivel de plan</div>
+                    <div class="drag-item bg-slate-100 text-slate-700 border border-slate-300 rounded-full px-3 py-1 text-sm font-semibold select-none" draggable="true" data-var="var-stars">Calificación 1-5</div>
+                    <div class="drag-item bg-slate-100 text-slate-700 border border-slate-300 rounded-full px-3 py-1 text-sm font-semibold select-none" draggable="true" data-var="var-bugs">N.º bugs/semana</div>
+                    <div class="drag-item bg-slate-100 text-slate-700 border border-slate-300 rounded-full px-3 py-1 text-sm font-semibold select-none" draggable="true" data-var="var-sesiones">N.º sesiones</div>
+                    <div class="drag-item bg-slate-100 text-slate-700 border border-slate-300 rounded-full px-3 py-1 text-sm font-semibold select-none" draggable="true" data-var="var-tiempo">Tiempo resp. (ms)</div>
+                    <div class="drag-item bg-slate-100 text-slate-700 border border-slate-300 rounded-full px-3 py-1 text-sm font-semibold select-none" draggable="true" data-var="var-ram">RAM usada (GB)</div>
+                    <div class="drag-item bg-slate-100 text-slate-700 border border-slate-300 rounded-full px-3 py-1 text-sm font-semibold select-none" draggable="true" data-var="var-temp">Temperatura °C</div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <p class="font-bold text-slate-700 mb-1 text-sm">Cualitativa nominal</p>
+                        <div id="zone-nominal" class="drop-zone border-2 border-dashed border-slate-300 rounded-xl p-3 bg-slate-50 min-h-16 flex flex-wrap gap-2" data-label="Cualitativa Nominal"></div>
+                    </div>
+                    <div>
+                        <p class="font-bold text-slate-700 mb-1 text-sm">Cualitativa ordinal</p>
+                        <div id="zone-ordinal" class="drop-zone border-2 border-dashed border-slate-300 rounded-xl p-3 bg-slate-50 min-h-16 flex flex-wrap gap-2" data-label="Cualitativa Ordinal"></div>
+                    </div>
+                    <div>
+                        <p class="font-bold text-slate-700 mb-1 text-sm">Cuantitativa discreta</p>
+                        <div id="zone-discreta" class="drop-zone border-2 border-dashed border-slate-300 rounded-xl p-3 bg-slate-50 min-h-16 flex flex-wrap gap-2" data-label="Cuantitativa Discreta"></div>
+                    </div>
+                    <div>
+                        <p class="font-bold text-slate-700 mb-1 text-sm">Cuantitativa continua</p>
+                        <div id="zone-continua" class="drop-zone border-2 border-dashed border-slate-300 rounded-xl p-3 bg-slate-50 min-h-16 flex flex-wrap gap-2" data-label="Cuantitativa Continua"></div>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 mb-3">Si el arrastre no funciona en tu dispositivo móvil, intenta también en un computador.</p>
+                <div class="flex gap-4">
+                    <button id="check-drag-btn" class="bg-green-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-800 transition-colors">Verificar</button>
+                    <button id="reset-drag-btn" class="bg-slate-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-slate-600 transition-colors">Reiniciar actividad</button>
+                </div>
+                <div id="drag-feedback" class="mt-4 hidden bg-slate-50 rounded-lg p-4 border border-slate-200 space-y-1"></div>
+            </div>
+
+            <!-- Actividad 2: Clasificador de escalas -->
+            <div class="bg-white border-l-4 border-blue-700 rounded-lg shadow-sm p-6 mb-8">
+                <h3 class="text-xl font-bold text-slate-700 mb-2">Actividad 2. ¿Qué escala de medición tiene cada variable?</h3>
+                <p class="text-slate-600 mb-5">Haz clic en la escala correcta para cada variable y obtén retroalimentación inmediata:</p>
+                <div id="escalas-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4"></div>
+                <button id="reset-escalas-btn" class="bg-slate-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-slate-600 transition-colors">Reiniciar actividad</button>
+            </div>
+
+            <!-- Actividad 3: VF Población y Muestra -->
+            <div class="bg-white border-l-4 border-green-700 rounded-lg shadow-sm p-6 mb-8">
+                <h3 class="text-xl font-bold text-slate-700 mb-2">Actividad 3. Verdadero o falso</h3>
+                <p class="text-slate-600 mb-5">Escribe V o F en cada casilla:</p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                        <input type="text" id="vf1" maxlength="1" placeholder="?" class="vf-input w-12 h-12 text-center border-2 border-slate-300 rounded-lg font-bold text-lg bg-white uppercase flex-shrink-0">
+                        <p class="text-slate-700 pt-2">Si se analizan todos los registros de una base de datos, el estudio se llama muestreo.</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                        <input type="text" id="vf2" maxlength="1" placeholder="?" class="vf-input w-12 h-12 text-center border-2 border-slate-300 rounded-lg font-bold text-lg bg-white uppercase flex-shrink-0">
+                        <p class="text-slate-700 pt-2">El símbolo x̄ representa la media calculada sobre una muestra (estadístico).</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                        <input type="text" id="vf3" maxlength="1" placeholder="?" class="vf-input w-12 h-12 text-center border-2 border-slate-300 rounded-lg font-bold text-lg bg-white uppercase flex-shrink-0">
+                        <p class="text-slate-700 pt-2">La temperatura del CPU en °C es una variable de escala de razón porque el cero absoluto indica ausencia de temperatura.</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                        <input type="text" id="vf4" maxlength="1" placeholder="?" class="vf-input w-12 h-12 text-center border-2 border-slate-300 rounded-lg font-bold text-lg bg-white uppercase flex-shrink-0">
+                        <p class="text-slate-700 pt-2">El número de bugs reportados por semana es una variable cuantitativa discreta.</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                        <input type="text" id="vf5" maxlength="1" placeholder="?" class="vf-input w-12 h-12 text-center border-2 border-slate-300 rounded-lg font-bold text-lg bg-white uppercase flex-shrink-0">
+                        <p class="text-slate-700 pt-2">El código de estado HTTP es una variable cualitativa nominal aunque sus valores sean números.</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                        <input type="text" id="vf6" maxlength="1" placeholder="?" class="vf-input w-12 h-12 text-center border-2 border-slate-300 rounded-lg font-bold text-lg bg-white uppercase flex-shrink-0">
+                        <p class="text-slate-700 pt-2">Calcular el promedio del sistema operativo de los usuarios tiene sentido estadístico.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 mt-5">
+                    <button id="check-vf-btn" class="bg-green-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-800 transition-colors">Verificar</button>
+                    <button id="reset-vf-btn" class="bg-slate-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-slate-600 transition-colors">Reiniciar actividad</button>
+                </div>
+                <div id="vf-result" class="mt-4 font-medium"></div>
+            </div>
+
+            <!-- Actividad 4: Análisis de caso -->
+            <div class="bg-white border-l-4 border-slate-400 rounded-lg shadow-sm p-6">
+                <h3 class="text-xl font-bold text-slate-700 mb-2">Actividad 4. Análisis de caso — para tu cuaderno</h3>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-4 text-sm italic text-slate-700">
+                    "Analizaremos los registros de los primeros 1000 usuarios que actualicen la app durante las primeras 24 horas, y con esos resultados concluiremos cómo funciona la versión para todos los usuarios."
+                </div>
+                <div class="space-y-3">
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-200"><p class="font-bold text-slate-700 mb-1">1.</p><p class="text-slate-700 text-sm">Identifica la población objetivo y la muestra propuesta.</p></div>
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-200"><p class="font-bold text-slate-700 mb-1">2.</p><p class="text-slate-700 text-sm">¿La muestra es representativa? Menciona al menos dos sesgos de tomar solo los primeros usuarios en actualizar.</p></div>
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-200"><p class="font-bold text-slate-700 mb-1">3.</p><p class="text-slate-700 text-sm">Propón una forma más adecuada de seleccionar la muestra.</p></div>
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-200"><p class="font-bold text-slate-700 mb-1">4.</p><p class="text-slate-700 text-sm">Clasifica cada métrica (tipo y escala): versión del sistema operativo, número de crashes, duración de sesión en minutos y valoración de 1 a 5 estrellas.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ EVALUACIÓN ══ -->
+        <div id="evaluacion" class="content-pane">
+            <h2 class="text-2xl sm:text-3xl font-bold text-green-800 mb-6">Evaluación</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="text-slate-600 mb-6">Comprueba lo que has aprendido. Selecciona la respuesta correcta para cada pregunta.</p>
+                <div id="quiz-container"></div>
+                <div class="flex gap-4 mt-6">
+                    <button id="submit-quiz-btn" class="bg-green-700 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-800 transition-colors">Finalizar evaluación</button>
+                    <button id="reset-quiz-btn" class="bg-slate-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-slate-600 transition-colors hidden">Reiniciar evaluación</button>
+                </div>
+                <div id="quiz-result" class="mt-4 text-lg font-bold"></div>
+            </div>
+        </div>
+
+        <!-- ══ RECURSOS ══ -->
+        <div id="recursos" class="content-pane">
+            <h2 class="text-2xl sm:text-3xl font-bold text-green-800 mb-6">Recursos para profundizar</h2>
+            <p class="text-slate-700 leading-relaxed mb-6">Para ampliar tu conocimiento sobre población, muestra y variables:</p>
+            <ul class="space-y-4">
+                <li class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-700 flex flex-col sm:flex-row sm:items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-green-800 text-lg">Ejercicios interactivos — Tipos de variables estadísticas (Superprof)</h3>
+                        <p class="text-sm text-slate-500 mb-2">Ejercicios interactivos para practicar la clasificación de variables</p>
+                        <a href="https://www.superprof.es/apuntes/escolar/matematicas/estadistica/estadistica_descriptiva/tipos-de-variables-estadisticas.html" target="_blank" class="underline text-slate-700 hover:text-green-700 text-sm">Ir al recurso</a>
+                    </div>
+                    <div class="mt-4 sm:mt-0 sm:ml-6 flex-shrink-0 flex flex-col items-center">
+                        <img src="img/Qr1.png" alt="QR Superprof" class="w-16 h-16 object-contain border border-green-300 rounded" loading="lazy"
+                             onerror="this.style.display='none'">
+                        <span class="text-xs text-slate-400 mt-1">Escanea el QR</span>
+                    </div>
+                </li>
+                <li class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-700 flex flex-col sm:flex-row sm:items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-green-800 text-lg">Relacionar columnas — Población, muestra y variables (Educaplay)</h3>
+                        <p class="text-sm text-slate-500 mb-2">Actividad interactiva de emparejamiento de conceptos estadísticos</p>
+                        <a href="https://es.educaplay.com" target="_blank" class="underline text-slate-700 hover:text-green-700 text-sm">Ir al recurso</a>
+                    </div>
+                    <div class="mt-4 sm:mt-0 sm:ml-6 flex-shrink-0 flex flex-col items-center">
+                        <img src="img/Qr2.png" alt="QR Educaplay" class="w-16 h-16 object-contain border border-green-300 rounded" loading="lazy"
+                             onerror="this.style.display='none'">
+                        <span class="text-xs text-slate-400 mt-1">Escanea el QR</span>
+                    </div>
+                </li>
+                <li class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-700 flex flex-col sm:flex-row sm:items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-green-800 text-lg">Estadística, población, muestra y variable (video, YouTube)</h3>
+                        <p class="text-sm text-slate-500 mb-2">Video explicativo que complementa los conceptos del tema</p>
+                        <a href="https://www.youtube.com/watch?v=CWDYwZ_c1lI" target="_blank" class="underline text-slate-700 hover:text-green-700 text-sm">Ir al recurso</a>
+                    </div>
+                    <div class="mt-4 sm:mt-0 sm:ml-6 flex-shrink-0 flex flex-col items-center">
+                        <img src="img/Qr3.png" alt="QR YouTube" class="w-16 h-16 object-contain border border-green-300 rounded" loading="lazy"
+                             onerror="this.style.display='none'">
+                        <span class="text-xs text-slate-400 mt-1">Escanea el QR</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ══ BIBLIOGRAFÍA ══ -->
+        <div id="bibliografia" class="content-pane">
+            <h2 class="text-2xl sm:text-3xl font-bold text-green-800 mb-6">Bibliografía</h2>
+            <div class="space-y-4">
+                <div class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-700"><span class="block text-slate-700">Anderson, D. R., Sweeney, D. J., Williams, T. A., Camm, J. D., y Cochran, J. J. (2020). <em>Estadística para administración y economía</em> (13.ª ed.). Cengage Learning.</span></div>
+                <div class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-700"><span class="block text-slate-700">Cadena Lozano, J. B. (2024). <em>Estadística descriptiva y probabilidad para los negocios</em>. Editorial CESA.</span></div>
+                <div class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-700"><span class="block text-slate-700">Levin, R. I., y Rubin, D. S. (2018). <em>Estadística para administración y economía</em> (8.ª ed.). Pearson.</span></div>
+                <div class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-700"><span class="block text-slate-700">Lind, D. A., Marchal, W. G., y Wathen, S. A. (2019). <em>Estadística aplicada a los negocios y la economía</em>. McGraw-Hill.</span></div>
+                <div class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-700"><span class="block text-slate-700">Spiegel, M. R., Schiller, J., y Srinivasan, R. A. (2018). <em>Estadística</em> (5.ª ed.). McGraw-Hill Education.</span></div>
+                <div class="bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-700"><span class="block text-slate-700">Triola, M. F. (2018). <em>Estadística</em>. Pearson.</span></div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- FOOTER FIJO EN TODAS LAS PÁGINAS -->
+<footer class="w-full py-6 border-t-2 border-slate-200 text-center bg-white md:ml-64 md:w-[calc(100%-16rem)]">
+    <p class="text-slate-600 font-medium">Creado por:</p>
+    <p class="text-green-800 font-bold text-lg">Centro de Innovación en TIC para el apoyo de la Docencia CINTIA</p>
+    <p class="text-slate-500 text-sm">Universidad de Córdoba</p>
+</footer>
+
+</div>
+
+<!-- Modal -->
+<div id="imageModal" class="image-modal">
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="Imagen ampliada">
+        <button class="close-modal" id="closeModal">&times;</button>
+    </div>
+</div>
+
+<script src="js/speech.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/activities.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/game.js"></script>
+<script src="js/navigation.js"></script>
+<script>
+function showMainTab(id) {
+    document.querySelectorAll('.main-tab-content').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.main-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-green-700', 'text-white', 'border-green-700');
+        btn.classList.add('bg-white', 'text-slate-600', 'border-green-200');
+    });
+    document.getElementById(id).classList.remove('hidden');
+    const btn = document.getElementById('main-tab-' + id.replace('tab-', ''));
+    btn.classList.add('bg-green-700', 'text-white', 'border-green-700');
+    btn.classList.remove('bg-white', 'text-slate-600', 'border-green-200');
+}
+
+function showSub(prefix, tab) {
+    document.querySelectorAll(`.sub-${prefix}`).forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll(`.sub-tab-${prefix}`).forEach(btn => {
+        btn.classList.remove('border-green-700', 'text-green-800', 'bg-green-50');
+        btn.classList.add('border-transparent', 'text-slate-500');
+    });
+    document.getElementById(`${prefix}-${tab}`).classList.remove('hidden');
+    const ab = document.getElementById(`${prefix}-tab-${tab}`);
+    ab.classList.add('border-green-700', 'text-green-800', 'bg-green-50');
+    ab.classList.remove('border-transparent', 'text-slate-500');
+}
+</script>
+<script src="https://elens.ecodestudio.dev/elens.js"></script>
+</body>
+</html>
